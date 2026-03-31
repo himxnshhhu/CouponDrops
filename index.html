@@ -268,7 +268,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.95);backdrop
 /* ===== DASHBOARD ===== */
 .dash-layout{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 68px)}
 .dash-sidebar{background:var(--white);border-right:1px solid var(--border);padding:28px 0}
-.dash-nav a{display:flex;align-items:center;gap:10px;padding:11px 24px;font-size:14px;font-weight:500;color:var(--muted);cursor:pointer;transition:all 0.15s;text-decoration:none}
+.dash-nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:12px 8px;font-size:11px;font-weight:500;color:var(--muted);cursor:pointer;transition:all 0.15s;text-decoration:none;text-align:center}
 .dash-nav a:hover,.dash-nav a.active{background:var(--green-light);color:var(--green)}
 .dash-nav a .dn-icon{font-size:16px;width:20px;text-align:center}
 .dash-sidebar-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:10px 24px 6px}
@@ -789,12 +789,7 @@ footer{background:var(--dark-2);padding:50px 5% 28px}
         <a onclick="switchDashTab(this,'trending')"><span class="dn-icon">🔥</span> Trending Coupons</a>
         <a onclick="switchDashTab(this,'news')"><span class="dn-icon">📰</span> Coupon News</a>
       </nav>
-      <div class="dash-sidebar-title" style="margin-top:16px">Account</div>
-      <nav class="dash-nav">
-        <a onclick="showPage('wallet')"><span class="dn-icon">👛</span> My Wallet</a>
-        <a onclick="showPage('kyc')"><span class="dn-icon">🔐</span> KYC Verification</a>
-        <a onclick="showPage('admin')"><span class="dn-icon">⚙️</span> Settings</a>
-      </nav>
+      
     </aside>
     <main class="dash-main">
       <!-- Overview Tab -->
