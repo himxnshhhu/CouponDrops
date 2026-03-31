@@ -402,10 +402,10 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.95);backdrop
 .admin-sidebar{background:var(--dark);padding:24px 0}
 .admin-profile{padding:0 20px 24px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:16px}
 .admin-avatar{width:52px;height:52px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:10px}
-.admin-name{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:#fff}
+.admin-name{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:#000000}
 .admin-role{font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px}
 .admin-nav a{display:flex;align-items:center;gap:12px;padding:11px 20px;font-size:14px;font-weight:500;color:rgba(255,255,255,0.55);cursor:pointer;transition:all 0.15s;text-decoration:none}
-.admin-nav a:hover,.admin-nav a.active{background:rgba(255,255,255,0.06);color:#fff}
+.admin-nav a:hover,.admin-nav a.active{background:rgba(255,255,255,0.06);color:#000000}
 .admin-nav a .an-icon{font-size:16px;width:22px;text-align:center}
 .admin-sidebar-title{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);padding:10px 20px 4px}
 .admin-main{padding:36px 40px;background:var(--bg)}
@@ -1194,7 +1194,11 @@ footer{background:var(--dark-2);padding:50px 5% 28px}
         <div class="admin-name">Himanshu Tatiwal</div>
         <div class="admin-role">Member · Verified ✅</div>
       </div>
-      <div class="admin-sidebar-title">Account</div>
+      <div class="admin-sidebar-title">
+        <div class="admin-sidebar-title">Account</div>
+        <div class="admin-sidebar-title">Preferences</div>
+        <div class="admin-sidebar-title">Support</div>
+      </div>
       <nav class="admin-nav">
         <a class="active" onclick="switchAdmin(this,'profile')"><span class="an-icon">👤</span> Profile</a>
         <a onclick="switchAdmin(this,'username')"><span class="an-icon">✏️</span> Change Username</a>
@@ -1202,7 +1206,7 @@ footer{background:var(--dark-2);padding:50px 5% 28px}
         <a onclick="switchAdmin(this,'2fa')"><span class="an-icon">🛡️</span> Two-Factor Auth</a>
         <a onclick="switchAdmin(this,'notifications')"><span class="an-icon">🔔</span> Notifications</a>
       </nav>
-      <div class="admin-sidebar-title" style="margin-top:12px">Preferences</div>
+
       <nav class="admin-nav">
         <a onclick="switchAdmin(this,'privacy-s')"><span class="an-icon">🔐</span> Privacy</a>
         <a onclick="switchAdmin(this,'payment')"><span class="an-icon">💳</span> Payment Methods</a>
@@ -1210,7 +1214,7 @@ footer{background:var(--dark-2);padding:50px 5% 28px}
         <a onclick="switchAdmin(this,'theme')"><span class="an-icon">🎨</span> Appearance</a>
         <a onclick="switchAdmin(this,'language')"><span class="an-icon">🌐</span> Language & Region</a>
       </nav>
-      <div class="admin-sidebar-title" style="margin-top:12px">Support</div>
+
       <nav class="admin-nav">
         <a onclick="switchAdmin(this,'help')"><span class="an-icon">❓</span> Help & Support</a>
         <a onclick="switchAdmin(this,'feedback')"><span class="an-icon">💬</span> Send Feedback</a>
@@ -1293,7 +1297,7 @@ footer{background:var(--dark-2);padding:50px 5% 28px}
             <div class="tfa-method" onclick="selectTFA(this)"><div class="tfa-method-icon">📧</div><div class="tfa-method-title">Email OTP</div><div class="tfa-method-desc">One-time code to your email</div></div>
             <div class="tfa-method" onclick="selectTFA(this)"><div class="tfa-method-icon">🔑</div><div class="tfa-method-title">Hardware Key</div><div class="tfa-method-desc">YubiKey or FIDO2 device</div></div>
           </div>
-          <div class="form-group"><label class="form-label">Phone / Email for OTP</label><input class="form-input" type="text" placeholder="+91 98765 43210 or email"></div>
+          <div class="form-group"><label class="form-label">Phone / Email for OTP</label><input class="form-input" type="text" placeholder="+91 9876543210 or email"></div>
           <button class="btn btn-primary" onclick="showToast('2FA setup initiated!','success')">Set Up 2FA →</button>
         </div>
       </div>
@@ -1302,20 +1306,9 @@ footer{background:var(--dark-2);padding:50px 5% 28px}
         <div class="admin-section-title">Notification Preferences</div>
         <div class="admin-section-sub">Control what alerts and updates you receive.</div>
         <div style="max-width:560px;display:flex;flex-direction:column;gap:12px">
-          ${[
-            ['New coupon drops in your favourite categories','Push & Email'],
-            ['Price drop alerts on watched coupons','Push only'],
-            ['Swap request received','Push & Email'],
-            ['Swap completed','Push & Email'],
-            ['KYC status updates','Email only'],
-            ['Weekly savings summary','Email only'],
-            ['Account security alerts','Push & Email'],
-            ['Platform updates & announcements','Email only'],
-            ['Expiring coupons in your wallet','Push & Email'],
-            ['Points earned notifications','Push only']
-          ].map(([title,sub])=>`
+
           <div class="settings-row">
-            <div class="settings-row-info"><div class="sr-title">${title}</div><div class="sr-desc">${sub}</div></div>
+            <div class="settings-row-info"><div class="sr-title">Notifications</div><div class="sr-desc">...</div></div>
             <label class="toggle-switch"><input type="checkbox" checked onchange="showToast('Preference saved','success')"><span class="toggle-slider"></span></label>
           </div>`).join('')}
         </div>
@@ -1328,7 +1321,7 @@ footer{background:var(--dark-2);padding:50px 5% 28px}
           
          
           <div class="settings-row">
-            <div class="settings-row-info"><div class="sr-title">${t}</div><div class="sr-desc">${d}</div></div>
+            <div class="settings-row-info"><div class="sr-title">Enable Privacy</div><div class="sr-desc">...</div></div>
             <label class="toggle-switch"><input type="checkbox" checked onchange="showToast('Privacy setting saved','success')"><span class="toggle-slider"></span></label>
           </div>`).join('')}
         </div>
@@ -1346,7 +1339,7 @@ footer{background:var(--dark-2);padding:50px 5% 28px}
           </div>
           <div class="card" style="margin-bottom:14px;display:flex;align-items:center;gap:14px">
             <div style="font-size:28px">🏦</div>
-            <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--dark)">arjun@okaxis</div><div style="font-size:12px;color:var(--muted)">UPI · Axis Bank</div></div>
+            <div style="flex:1"><div style="font-weight:600;font-size:14px;color:var(--dark)">abc@okaxis</div><div style="font-size:12px;color:var(--muted)">UPI · Axis Bank</div></div>
             <button class="btn btn-outline btn-sm" onclick="showToast('UPI removed','')">Remove</button>
           </div>
           <button class="btn btn-primary" onclick="showToast('Add payment method — coming soon!','')">+ Add Payment Method</button>
@@ -1357,36 +1350,15 @@ footer{background:var(--dark-2);padding:50px 5% 28px}
         <div class="admin-section-title">Linked Accounts</div>
         <div class="admin-section-sub">Connect third-party accounts for faster login and sync.</div>
         <div style="max-width:560px;display:flex;flex-direction:column;gap:12px">
-          ${[['Google','✅ Connected · abc@gmail.com'],['Apple','Not connected'],['Facebook','Not connected'],['PhonePe','✅ Connected · +91 9876543210']].map(([name,status])=>`
+
           <div class="settings-row">
-            <div class="settings-row-info"><div class="sr-title">${name}</div><div class="sr-desc">${status}</div></div>
-            <button class="btn ${status.startsWith('✅')?'btn-outline':'btn-primary'} btn-sm" onclick="showToast('${status.startsWith('✅')?name+' disconnected':name+' connected!'}','success')">${status.startsWith('✅')?'Disconnect':'Connect'}</button>
+            <div class="settings-row-info"><div class="sr-title">Google</div><div class="sr-desc">...</div></div>
+            <button class="btn ${status.startsWith('✅')?'btn-outline':'btn-primary'} btn-sm" onclick="showToast('${status.startsWith('✅')?name+' disconnected':name+' connected!'}','success')">connect</button>
           </div>`).join('')}
         </div>
       </div>
       <!-- Appearance -->
-      <div class="admin-section" id="admin-theme">
-        <div class="admin-section-title">Appearance</div>
-        <div class="admin-section-sub">Personalise the look of Coupon Drops.</div>
-        <div class="card" style="max-width:480px">
-          <div class="form-group"><label class="form-label">Theme</label>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
-              ${[['Light','☀️'],['Dark','🌙'],['System','💻']].map(([t,icon])=>`<div style="border:2px solid ${t==='Light'?'var(--green)':'var(--border)'};border-radius:12px;padding:16px;text-align:center;cursor:pointer;transition:all 0.18s" onclick="showToast('Theme: ${t}','success');this.parentNode.querySelectorAll('div').forEach(d=>d.style.borderColor='var(--border)');this.style.borderColor='var(--green)'"><div style="font-size:24px;margin-bottom:6px">${icon}</div><div style="font-size:13px;font-weight:600">${t}</div></div>`).join('')}
-            </div>
-          </div>
-          <div class="form-group"><label class="form-label">Accent Colour</label>
-            <div style="display:flex;gap:10px">
-              ${['#1a7a4a','#3b82f6','#7c3aed','#f5a623','#e53e3e'].map(c=>`<div style="width:36px;height:36px;border-radius:50%;background:${c};cursor:pointer;border:3px solid transparent;transition:all 0.18s" onclick="showToast('Accent colour updated!','success');document.querySelectorAll('.acc-dot').forEach(d=>d.style.borderColor='transparent');this.style.borderColor='#fff'" class="acc-dot"></div>`).join('')}
-            </div>
-          </div>
-          <div class="form-group"><label class="form-label">Font Size</label>
-            <select class="form-select" onchange="showToast('Font size updated!','success')"><option>Default (14px)</option><option>Small (12px)</option><option>Large (16px)</option><option>Extra Large (18px)</option></select>
-          </div>
-          <div class="form-group"><label class="form-label">Layout Density</label>
-            <select class="form-select" onchange="showToast('Layout updated!','success')"><option>Comfortable</option><option>Compact</option><option>Spacious</option></select>
-          </div>
-        </div>
-      </div>
+
       <!-- Language -->
       <div class="admin-section" id="admin-language">
         <div class="admin-section-title">Language & Region</div>
@@ -1404,11 +1376,11 @@ footer{background:var(--dark-2);padding:50px 5% 28px}
         <div class="admin-section-title">Help & Support</div>
         <div class="admin-section-sub">Get answers or contact our support team.</div>
         <div style="max-width:560px;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px">
-          ${[['📚','FAQ','Browse common questions'],['💬','Live Chat','Chat with support'],['📧','Email Us','support@coupondrops.in'],['🐛','Report a Bug','Found something broken?']].map(([icon,title,desc])=>`
+         
           <div class="card" style="cursor:pointer;transition:all 0.2s;text-align:center" onclick="showToast('Opening ${title}...','')">
-            <div style="font-size:28px;margin-bottom:8px">${icon}</div>
-            <div style="font-weight:600;font-size:14px;color:var(--dark);margin-bottom:4px">${title}</div>
-            <div style="font-size:12px;color:var(--muted);font-weight:300">${desc}</div>
+            <div style="font-size:28px;margin-bottom:8px">...</div>
+            <div style="font-weight:600;font-size:14px;color:var(--dark);margin-bottom:4px">ticket</div>
+            <div style="font-size:12px;color:var(--muted);font-weight:300">...</div>
           </div>`).join('')}
         </div>
         <div class="card" style="max-width:560px">
